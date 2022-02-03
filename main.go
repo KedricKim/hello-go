@@ -2,11 +2,25 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"strings"
+
+	"github.com/ked/learngo/accounts"
 )
 
 func main() {
+	// basicPratice()
 
+	account := accounts.NewAccount("ked")
+	account.Deposit(1000)
+	err := account.WithDraw(9900)
+	if err != nil {
+		log.Fatalln(err)
+	}
+	fmt.Println(account.ShowDeposit())
+}
+
+func basicPratice() {
 	fmt.Println(multiple(3, 7))
 
 	leng, name := lenAndString("kedric")
