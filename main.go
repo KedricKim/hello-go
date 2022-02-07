@@ -6,11 +6,49 @@ import (
 	"strings"
 
 	"github.com/ked/learngo/accounts"
+
+	"github.com/ked/learngo/mydict"
 )
 
 func main() {
 	// basicPratice()
+	// methodPractice()
+	// mapPractice()
 
+}
+
+func mapPractice() {
+	dictionary := mydict.Dictionary{"first": "First word"}
+	defunition, err := dictionary.Search("second")
+	if err != nil {
+		fmt.Println(err)
+	} else {
+		fmt.Println(defunition)
+	}
+
+	dictionary.Add("second", "hello")
+
+	newWord := "third"
+	_, err2 := dictionary.Search(newWord)
+	if err2 != nil {
+		dictionary.Add(newWord, "hello")
+	} else {
+		dictionary.Update(newWord, "hi")
+	}
+
+	fmt.Println(dictionary)
+
+	result, err3 := dictionary.Delete(newWord)
+	if err3 != nil {
+		fmt.Println(err3)
+	} else {
+		fmt.Println(result)
+	}
+
+	fmt.Println(dictionary)
+}
+
+func methodPractice() {
 	account := accounts.NewAccount("ked")
 	account.Deposit(100)
 	err := account.WithDraw(20)
